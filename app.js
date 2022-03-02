@@ -13,7 +13,7 @@ const errorController = require('./controllers/error');
 const User = require('./models/user');
 
 const MONGODB_URI =
-  'mongodb+srv://pradip_vadchhak:N2RcJSUNtavseJ8d@cluster0.ytlx3.mongodb.net/shop';
+  '<Enter ypur <MONGODB_URL> >';
 
 const app = express();
 const store = new MongoDBStore({
@@ -54,7 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(
   session({
-    secret: 'my secret',
+    secret: '<ENTER YOUR ENCRYPTION_KEY>',
     resave: false,
     saveUninitialized: false,
     store: store
