@@ -2,9 +2,9 @@
 
 SetUp instructions :-
 
--> Frist of all install Node and npm on your system.
+-> First of all install Node and npm on your system.
 -> In terminal or cmd,create your own node_package using command 'npm init'.
--> Afeter creating package you have to intall node library which name in package.txt.
+-> After creating package you have to intall node library which name in package.txt.
 -> You have enter your API like mongoDb, sendgrid, stripe.
 
 Change your API belowe file :-
