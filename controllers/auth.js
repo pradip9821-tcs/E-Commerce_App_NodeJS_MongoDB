@@ -6,23 +6,23 @@ const { validationResult } = require('express-validator');
 
 const User = require('../models/user');
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.ethereal.email',
-  port: 587,
-  auth: {
-    user: 'ezra.morissette87@ethereal.email',
-    pass: 'J1jKTD5xYvNnkxphbD'
-  }
-});
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.ethereal.email',
+//   port: 587,
+//   auth: {
+//     user: 'ezra.morissette87@ethereal.email',
+//     pass: 'J1jKTD5xYvNnkxphbD'
+//   }
+// });
 
-// const transporter = nodemailer.createTransport(
-//   sendgridTransport({
-//     auth: {
-//       api_key:
-//         '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'
-//     }
-//   })
-// );
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key:
+        '<Enter your sendGrid API_KEY>'
+    }
+  })
+);
 
 exports.getLogin = (req, res, next) => {
   let message = req.flash('error');
@@ -158,12 +158,12 @@ exports.postSignup = (req, res, next) => {
     })
     .then(result => {
       res.redirect('/login');
-      // transporter.sendMail({
-      //   to: email,
-      //   from: 'pradip9821.tcs@gmail.com',
-      //   subject: 'Signup succeeded!',
-      //   html: '<h1>You successfully signed up!</h1>'
-      // });
+      transporter.sendMail({
+        to: email,
+        from: 'test@gmail.com',
+        subject: 'Signup succeeded!',
+        html: '<h1>You successfully signed up!</h1>'
+      });
     })
     .catch(err => {
       const error = new Error(err);
@@ -214,7 +214,7 @@ exports.postReset = (req, res, next) => {
         res.redirect('/');
         transporter.sendMail({
           to: req.body.email,
-          from: 'pradip9821.tcs@gmail.com',
+          from: 'test@gmail.com',
           subject: 'Password Reset Link!',
           html: `
             <p>You request password reset</p>
@@ -282,7 +282,7 @@ exports.postNewPassword = (req, res, next) => {
       res.redirect('/login');
       return transporter.sendMail({
         to: email,
-        from: 'pradip9821.tcs@gmail.com',
+        from: 'test@gmail.com',
         subject: 'Password reseted !',
         html: `
           <p>Hello ${email},</p>
