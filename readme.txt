@@ -12,4 +12,4 @@ Change your API belowe file :-
 -> SendGrid_API - controllers/auth.js(22)
 -> Stripe - controller/shop.js(4)
           - views/shop/checkout.js(23)
--> Encryption_Key - app.js
+-> Encryption_Key - app.js(58)
